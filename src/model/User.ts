@@ -19,8 +19,8 @@ export interface User{
     username  : string ,
     email : string ,
     password : string ,
-    verifyToken : string ,
-    verifyTokenExpiry : Date ,
+    verifyOtp? : string ,
+    verifyOtpExpiry? : Date ,
     isVerified : boolean ,
     isAcceptingMessage : boolean ,
     messages : Message[]
@@ -42,13 +42,15 @@ const UserSchema = new Schema<User>({
         type : String ,
         required : [true , "Password is required" ]
     } ,
-    verifyToken :{
+    verifyOtp :{
         type : String,
-        required : [ true, "Verify Code is required"]
+        // required : [ true, "Verify Code is required"]
+        default : null
     } ,
-    verifyTokenExpiry : {
+    verifyOtpExpiry : {
         type : Date,
-        required : [ true, "Verify Code Expiry is required"]
+        // required : [ true, "Verify Code Expiry is required"]
+        default : null
     } ,
     isVerified:{
         type : Boolean ,
