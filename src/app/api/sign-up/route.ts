@@ -6,7 +6,7 @@ import { sendVerificationEmail } from "@/helpers/sendVerificationEmail";
 export async function POST(request: Request) {
   await dbConnect();
   try {
-    const { username, email, Password } = await request.json();
+    const { username, email, password } = await request.json();
 
     const existingVerifiedUser = await UserModel.findOne({
       username,
@@ -31,13 +31,13 @@ export async function POST(request: Request) {
           { status: 400 }
         );
       } else {
-        const hashedPass = await bcryptjs.hash(Password, 10);
+        const hashedPass = await bcryptjs.hash(password, 10);
         existingEmailUser.password = hashedPass;
         existingEmailUser.verifyOtp = otp; // Set OTP
         await existingEmailUser.save();
       }
     } else {
-      const hashedPass = await bcryptjs.hash(Password, 10);
+      const hashedPass = await bcryptjs.hash(password, 10);
 
       const user = new UserModel({
         username,
