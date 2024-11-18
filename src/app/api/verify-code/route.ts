@@ -4,7 +4,8 @@ import UserModel from "@/model/User";
 export async function POST(req : Request){
     await dbConnect()
     try {
-        const { username , otp } = await req.json();
+        const { username , value } = await req.json();
+        const otp = value
         const decodeUsername = decodeURIComponent(username)
         const user = await UserModel.findOne({
             username : decodeUsername ,
@@ -29,7 +30,7 @@ export async function POST(req : Request){
         await user.save()
         return Response.json({
             success : true ,
-            message : "Correct otp"
+            message : "Otp verified successfully"
         },{
             status : 200
         })
