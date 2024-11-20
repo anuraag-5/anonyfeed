@@ -1,6 +1,6 @@
 import { z } from "zod"
 
-export const signinValidation = {
+export const signinValidation = z.object({
     email : z.string() ,
     password : z.string()
-}
+})

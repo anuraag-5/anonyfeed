@@ -1,6 +1,7 @@
 import mongoose , { Schema } from "mongoose"
 
 export interface Message{
+    _id? : mongoose.Schema.Types.ObjectId ,
     content : string ,
     createdAt : Date
 }

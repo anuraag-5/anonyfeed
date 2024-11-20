@@ -1,5 +1,5 @@
 import { z } from "zod"
 
-export const acceptMessagesValidation = {
+export const acceptMessagesValidation = z.object({
     acceptMessages : z.boolean()
-}
+})
