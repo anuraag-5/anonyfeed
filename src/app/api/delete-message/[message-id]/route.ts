@@ -5,6 +5,7 @@ import { User } from "next-auth";
 import { authOptions } from "../../auth/[...nextauth]/option";
 import { error } from "console";
 
+// @ts-ignore
 export async function DELETE(request : Request , { params } : { params : 
     {messageId: string}}){
     const messageId = params.messageId
