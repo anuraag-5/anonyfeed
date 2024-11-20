@@ -7,9 +7,9 @@ import { error } from "console";
 
 export async function DELETE(
     request: Request,
-    context: { params: { "message-id": string } }
-){
-    const { "message-id": messageId } = context.params;
+    { params }: { params: { messageId: string } }
+) {
+    const { messageId } = params;
     await dbConnect()
     const session = await getServerSession(authOptions)
     const user: User = session?.user as User
