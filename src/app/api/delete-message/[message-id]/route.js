@@ -6,12 +6,11 @@ import { authOptions } from "../../auth/[...nextauth]/option";
 import { error } from "console";
 
 // @ts-ignore
-export async function DELETE(request : Request , { params } : { params : 
-    {messageId: string}}){
+export async function DELETE(request , { params }){
     const messageId = params.messageId
     await dbConnect()
     const session = await getServerSession(authOptions)
-    const user: User = session?.user as User
+    const user = session?.user
 
     if(!session || !session.user){
         console.log("Error in deleting messsage" , error)
